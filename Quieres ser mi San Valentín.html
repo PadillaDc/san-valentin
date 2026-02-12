@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi San Valentín?</title>
+
+    <style>
+        body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #b3e5fc, #4fc3f7, #0288d1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* mejor que height */
+    padding: 20px;
+    flex-direction: column;
+    position: relative;
+    box-sizing: border-box;
+}
+
+h1 {
+    color: #0288d1;
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.container {
+    position: relative;
+    width: 450px;
+    max-width: 95%; /* 🔥 importante */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #0288d1;
+    border-radius: 15px;
+    padding: 25px;
+    background-color: white;
+    box-shadow: 0 0 25px rgba(2,136,209,0.6);
+    box-sizing: border-box;
+}
+
+.buttons {
+    position: relative;
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn {
+    font-size: 24px;
+    padding: 15px 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+.yes {
+    background-color: #0288d1;
+    color: white;
+    position: relative;
+    z-index: 2;
+}
+
+.no {
+    background-color: #4fc3f7;
+    color: white;
+    position: relative;
+    z-index: 1;
+}
+
+img {
+    width: 300px;
+    max-width: 100%; /* 🔥 importante */
+    height: auto;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 3px solid #0288d1;
+}
+
+.message {
+    font-size: 36px;
+    color: #01579b;
+    display: none;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* ====================== */
+/* 📱 RESPONSIVE CELULAR */
+/* ====================== */
+
+@media (max-width: 768px){
+
+    h1{
+        font-size: 26px;
+    }
+
+    .container{
+        padding: 20px;
+    }
+
+    .buttons{
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .btn{
+        width: 100%;
+        font-size: 18px;
+        padding: 12px;
+    }
+
+    .message{
+        font-size: 22px;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>¿Quieres ser mi San Valentín? 💙</h1>
+
+        <img id="gif" src="videos/predeterminado.gif" alt="GIF animado">
+
+        <div class="buttons" id="button-container">
+            <button class="btn yes" onclick="accept()">Sí 💙</button>
+            <button class="btn no" onclick="reject()">No</button>
+        </div>
+
+        <div class="message" id="message">¡Sabía que dirías que sí! 💘</div>
+    </div>
+
+    <script>
+        function moveNoButton() {
+            let button = document.querySelector('.no');
+            let container = document.querySelector('.container');
+            let maxX = container.offsetWidth / 3;
+            let maxY = container.offsetHeight / 5;
+            let x = (Math.random() * (maxX * 2)) - maxX;
+            let y = (Math.random() * (maxY * 2)) - maxY;
+            button.style.transform = `translate(${x}px, ${y}px)`;
+        }
+        
+        function accept() {
+            document.getElementById('gif').src = "videos/quesi.gif";
+            document.getElementById('button-container').style.display = "none";
+            document.getElementById('message').style.display = "block";
+        }
+        
+        function reject() {
+            document.getElementById('gif').src = "videos/bromita.gif";
+            moveNoButton();
+        }
+    </script>
+</body>
+</html>
